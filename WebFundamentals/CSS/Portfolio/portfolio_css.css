@@ -1,0 +1,175 @@
+#container{
+    width: 950px;
+    /*height: 1100px;*/
+    background-color: #eeefef;
+    margin: 0 auto;
+}
+#header{
+    padding:10px;
+    height: auto;
+}
+
+#header h1{
+    padding-left: 20px;
+    font-family: "Comic Sans MS";
+    display: inline;
+    vertical-align: middle;
+}
+
+#header h3{
+    display: inline;
+    vertical-align: middle;
+    padding-left: 340px;
+    font-family: "Lucida Grande";
+}
+
+#main-content{
+    width: 910px;
+    height: 930px;
+    padding: 20px;
+    background: radial-gradient(#594d57, #453742, #080307);
+}
+
+#profile_pic{
+    display: inline-block;
+    border: 4px solid #bbbfbf;
+    vertical-align: bottom;
+}
+
+#profile_pic img{
+    vertical-align: bottom;
+}
+
+#aboutme{
+    width: 478px;
+    height: 250px;
+    background-color: white;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+#about_header{
+    background: linear-gradient(#cccfcf, #898f90, #bbbfbf);
+}
+#about_header h2{
+    color: white;
+    margin: 10px;
+    font-size: 18px;
+    font-family: "Lucida Grande";
+    font-weight: normal;
+    display: inline-block;
+}
+
+#about-content{
+    background: linear-gradient(to right,#eeefef, #bbbfbf);
+    display: inline-block;
+    padding: 0px 10px 20px 10px;
+}
+
+#about-content p{
+    display: inline-block;
+    font-family: "Lucida Grande";
+    font-size: 14px;
+}
+
+#column0, #column1, #column2{
+    width: 287px;
+    height: 650px;
+    background-color: white;
+    margin-top: 20px;
+    margin-right: 0px;
+    background: linear-gradient(to right,#eeefef, #bbbfbf);
+    display: inline-block;
+    vertical-align: top;
+}
+#column0,#column1{
+    margin-right: 20px;
+}
+
+#column0_header, #column1_header, #column2_header, #column0_techhead, #column1_techhead, #column2_techhead{
+    background: linear-gradient(#cccfcf, #898f90, #bbbfbf);
+}
+
+#column0_header h2, #column1_header h2, #column2_header h2, #column0_techhead h2, #column1_techhead h2, #column2_techhead h2{
+    color: white;
+    margin: 10px;
+    font-size: 18px;
+    font-family: "Lucida Grande";
+    font-weight: normal;
+    display: inline-block;
+}
+
+#column0_content p,#column1_content p,#column2_content p{
+    margin: 10px 10px;
+    font-family: "Lucida Grande";
+    height: 220px;
+}
+
+#column0_techs, #column1_techs, #column2_techs{
+    margin:10px;
+}
+
+#column0_techs img, #column1_techs img, #column2_techs img{
+    width: 40px;
+    height: 40px;
+    /*padding-right: 10px;
+    padding-bottom: 10px;*/
+}
+
+#column0_button, #column1_button, #column2_button{
+    font-family: "Lucida Grande";
+    background-color: #7a9969;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+#column0_button{
+    width: 80px;
+    margin-left: 90px;
+    padding: 10px 0px 10px 10px;
+}
+
+#column1_button{
+    width: 130px;
+    margin-left: 70px;
+    padding: 10px 0px 10px 10px;
+}
+
+#column2_button{
+    width: 85px;
+    margin-left: 90px;
+    padding: 10px 0px 10px 10px;
+}
+
+#column0_button label, #column1_button label, #column2_button label{
+    color: white;
+}
+
+#contact_info{
+    margin: 10px;
+    padding-left: 350px;
+    /*vertical-align: middle;*/
+}
+
+#contact_info p{
+    font-family: "Lucida grande";
+}
+
+#social_media{
+    padding-left: 320px;
+    /*vertical-align: middle;*/
+}
+
+#social_media img{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#social_media a{
+    color: black;
+    vertical-align: middle;
+    font-style: italic;
+    font-size: 18px;
+}
