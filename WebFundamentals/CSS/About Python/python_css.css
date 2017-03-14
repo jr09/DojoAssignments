@@ -1,0 +1,245 @@
+*{
+    padding = 0;
+    margin = 0;
+}
+
+#container{
+    width: 970px;
+    height: auto;
+    /*background-color: #3776ab;*/
+    background-color: #2f5c7e;
+    /*background-color: white;*/
+    margin:0 auto;
+}
+
+#div1{
+    width: 970px;
+    height: auto;
+}
+
+#textsizebox{
+    background-color: #2f5c7e;
+    width: auto;
+    height: auto;
+    font-size: 13px;
+    font-family: sans-serif;
+    padding-left: 750px;
+}
+#textsizebox h3{
+    display: inline;
+    color: white;
+    font-weight: normal;
+}
+#textsizebox a{
+    color: gold;
+    display: inline;
+}
+#textsizebox p{
+    display: inline;
+}
+
+#logo{
+    width: 970px;
+    height: auto;
+    margin: 0;
+    /*display: inline-block;*/
+}
+
+#logo img{
+    padding-left: 30px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#search_encloser{
+    width: auto;
+    height: auto;
+    background-color: #665c61;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #888888;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 300px;
+    margin-top: 5px;
+}
+
+#textplace{
+    width: 150px;
+    height: 30px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+#go{
+    display: inline-block;
+    width: 4em;
+    height: 3em;
+    margin-right: 30px;
+    background-color: #2f5c7e;
+    color: white;
+    border-radius: 5px;
+}
+#options{
+    width: 840px;
+    height: auto;
+    background-color: #6885a6;
+    margin-top: 15px;
+    margin-left: 80px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black
+}
+
+#options a{
+    display: inline;
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    padding-left: 45px;
+}
+
+#user_material{
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+    margin-left: 80px;
+    display: inline-block;
+    vertical-align: top;
+    /*border: 1px solid black;*/
+}
+
+#user_material ul{
+    /*padding-top: 10px;*/
+    text-align: center;
+}
+
+#user_material ul li{
+    margin-top: 10px;
+    margin-left: 0;
+    list-style-position: inside;
+}
+
+#user_material ul li span{
+    position: relative;
+    left: -20px;
+}
+
+#user_material ul a{
+    color: white;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
+
+#description{
+    width: 650px;
+    height: auto;
+    margin-top: 5px;
+    display: inline-block;
+    /*border: 1px solid black;*/
+    vertical-align: top;
+    color: white;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 14px;
+    text-align: center;
+}
+
+#description h2{
+    font-style: italic;
+    font-weight: lighter;
+    font-family: sans-serif;
+    color: gold;
+    font-size: 20px;
+}
+
+#description h3{
+    font-weight: lighter;
+    color: white;
+    font-family: sans-serif;
+}
+
+#part2{
+    width: inherit;
+    height: auto;
+    background-color: white;
+    /*border: 1px solid black;*/
+}
+
+#get_started, #apps{
+    width: 300px;
+    height: auto;
+    /*border: 1px solid black;*/
+    font-family: sans-serif;
+    font-weight: lighter;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+    padding-right: 100px;
+    vertical-align: top;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-top: 5px solid #c4c7f9;
+}
+
+#get_started{
+    margin-left: 60px;
+}
+
+#get_started h3, #apps h3{
+    margin-top: 2px;
+    font-size: 16px;
+}
+
+#get_started ul, #get_started p,#apps ul, #apps p{
+    font-size: 12px;
+}
+
+#get_started ul, #apps ul{
+    margin-top: -10px;
+}
+
+#get_started ul li span,#apps ul li span{
+    color: #c4c7f9;
+    position: relative;
+}
+
+#apps p a{
+    text-decoration: none;
+    color: #c4c7f9;
+    font-size: 11px;
+}
+
+#part3{
+    width: 970px;
+    height: auto;
+    background: linear-gradient(to bottom,#32395a, #4e595bc);
+    padding-top: 40px;
+}
+
+#part3 h3{
+    color: #c4c7f9;
+    font-weight: lighter;
+    font-family: sans-serif;
+    font-size: 16px;
+    display: inline;
+    margin-left: 50px;
+}
+
+#part3 h6{
+    color: #c4c7f9;
+    font-size: 10px;
+    font-weight: lighter;
+    font-family: sans-serif;
+    position: relative;
+    left: 450px;
+    margin-top:10px;
+    padding-bottom: 5px;
+}
+
+#first{
+    padding-left: 160px;
+}
