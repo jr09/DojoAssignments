@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jquery Functions</title>
+        <link rel="stylesheet" type="text/css" href="test_css.css"/>
+        <script type="text/javascript "src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // alert('Beginning your jquery practice!!');
+
+                $('#hide').click(function(){
+                    $('h3').hide();
+                });
+
+                $('#show').click(function(){
+                    $('h3').show();
+                });
+
+                $('#toggle').click(function(){
+                    $('h3').toggle();
+                });
+
+                $('#slideup').click(function(){
+                    $('#box').slideUp();
+                });
+
+                $('#slidedown').click(function(){
+                    $('#box').slideDown();
+                });
+
+                $('#slidetoggle').click(function(){
+                    $('#box').slideToggle();
+                });
+
+                $('#fadein').click(function(){
+                    if($('h2:hidden')){
+                        $('h2').fadeIn();
+                    }
+                });
+
+                $('#fadeout').click(function(){
+                    if($('h2:visible')){
+                        $('h2').fadeOut();
+                    }
+                });
+
+                $('#addclass').click(function(){
+                    $('button').addClass('testcolor');
+                });
+
+                $('#before').click(function(){
+                    $('h2').before('Hello ');
+                });
+
+                $('#after').click(function(){
+                    $('h2').after('The end');
+                });
+
+                $('#append').click(function(){
+                    $('h2').append('; but she didnt listen');
+                });
+
+                $('#html1').click(function(){
+                    var getext = $('h2').html();
+                    alert(getext);
+                });
+
+                $('h2').data('test', {first:'IronMan', last:'IronFist'});
+                $('span:first').text($('h2').data('test').first);
+                $('span:last').text($('h2').data('test').last);
+            });
+        </script>
+    </head>
+    <body>
+        <!-- testing hide, show and toggle
+        <h3>Use the hide/show button to play with this line</h3>
+        <button id="hide">click to hide above line</button>
+        <button id="show">click to show the above line</button>
+        <button id="toggle">Toggle</button> -->
+
+        <!-- testing slideUp, slideDown, slideToggle
+        <div id="box"></div>
+        <button id="slideup"n>Click to slide the box up</button>
+        <button id="slidedown"n>Click to slide the box down</button>
+        <button id="slidetoggle">Click to toggle slide</button> -->
+
+        <!-- testing fadeIn, fadeOut, addClass
+        <h2>This paragraph just fades</h2>
+        <button id="fadein">Click for para to fade in</button>
+        <button id="fadeout">Click for para to fade out</button><br />
+        <button id="addclass">Click to change color of all buttons</button> -->
+
+        <!-- testing before, after, append
+        <h2>, I said;</h2>
+        <button id="before">Click to play with before</button>
+        <button id="after">Click to play with after</button>
+        <button id="append">Click to play with append</button> -->
+
+        <!-- testing html, text
+        <h2>You will get a pop up</h2>
+        <button id="html1">Click to change above text</button> -->
+
+        <!-- testing data -->
+        <h2>
+            My fav superheroes are <span></span> and <span></span>.
+        </h2>
+
+
+
+    </body>
+</html>

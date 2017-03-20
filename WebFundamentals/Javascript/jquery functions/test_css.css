@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#box{
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    margin: 5px;
+}
+
+.testcolor{
+    background-color: red;
+}
