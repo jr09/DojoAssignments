@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hover In/Out Assignment</title>
+        <link rel="stylesheet" type="text/css" href="hover_css.css"/>
+        <script type="text/javascript "src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('img').hover(function(){
+                    var temp = $(this).attr('data-alt-src');
+                    $(this).attr('data-alt-src', $(this).attr('src'));
+                    $(this).attr('src', temp);
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Hover In/Out</h1>
+            <img src="up1.png" data-alt-src="up2.png" alt="ninja img here"/>
+            <img src="ns1.png" data-alt-src="ns1_120.png" alt="shiruki img here"/>
+            <img src="up2.png" data-alt-src="up1.png" alt="ninja img here"/>
+            <img src="ns1_120.png" data-alt-src="ns1.png" alt="shiruki img here"/>
+        </div>
+    </body>
+</html>
