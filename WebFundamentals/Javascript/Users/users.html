@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Users Assignemnt</title>
+        <link rel="stylesheet" type="text/css" href="users_css.css"/>
+        <script type="text/javascript "src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="Text/javascript">
+            $(document).ready(function(){
+
+                $('button').click(function(){
+                    var first = $('input[name=firstname]').val();
+                    var second = $('input[name=lastname]').val();
+                    var email = $('input[name=email]').val();
+                    var contact = $('input[name=contact]').val();
+                    $('#dynamic').append('<tr><td class="column">'+first+
+                    '</td><td class="column">'+second+
+                    '</td><td class="column">'+email+
+                    '</td><td class="column">'+contact+
+                    '</td></tr>');
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <h1>jQuery Users Assignment</h1>
+            <table id="dynamic">
+                <tr>
+                    <th class="column">First Name</th>
+                    <th class="column">Last Name</th>
+                    <th class="column">Email</th>
+                    <th class="column">Contact #</th>
+                </tr>
+            </table>
+            <h2>Add User</h2>
+            <div id="forms">
+                <table>
+                    <tr>
+                        <td><label>First Name: </label></td>
+                        <td><input type="text" name="firstname" value="first"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Last Name: </label></td>
+                        <td><input type="text" name="lastname" value="last"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email Address: </label></td>
+                        <td><input type="text" name="email" value="emailid@email.com"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Contact No.: </label></td>
+                        <td><input type="text" name="contact" value="555-555-5555"></td>
+                    </tr>
+                </table>
+            </div>
+            <button>Add User</button>
+        </div>
+    </body>
+</html>
