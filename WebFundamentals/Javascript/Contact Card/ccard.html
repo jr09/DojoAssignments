@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Contact Card Assignment</title>
+        <link rel="stylesheet" type="text/css" href="ccard_css.css"/>
+        <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('button').click(function(){
+                    var first = $('input[name=firstname]').val();
+                    var last = $('input[name=lastname]').val();
+                    var name = first+' '+last;
+                    var desc = $('input[name=description]').val();
+
+                    var temp = $('.card').first().clone();
+                    temp.find('h2').html(name);
+                    temp.find('p').html(desc);
+                    $('#ccard').prepend(temp);
+                });
+
+                $(document).on('click', 'h4', function(){
+                    $(this).parent('.content').slideUp('fast');
+                    $(this).parent().siblings('p').css('display', 'unset');
+                });
+
+                $(document).on('click', 'p', function(){
+                    $(this).parent().children('.content').slideDown();
+                    $(this).slideUp();
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Contact Cards</h1>
+            <div id="info" class="main_div">
+                <table class="table1">
+                    <tr>
+                        <td><label>First Name:</label></td>
+                        <td><input type="text" name="firstname" placeholder="firstname" /><br /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Last Name:</label></td>
+                        <td><input type="text" name="lastname" placeholder="lastname"/><br /></td>
+                    </tr>
+                <table>
+
+                </table class="table2">
+                <tr><label>Description:</label></tr><br />
+                <tr><input type="textarea" name="description" placeholder="describe yourself!"/></tr>
+                </table>
+                <button>Add User</button>
+            </div>
+            <div id="ccard" class="main_div">
+                <div class="card">
+                    <div class="content">
+                        <h2>Jivesh Rajpal</h2>
+                        <h4>Click here for description!</h4>
+                    </div>
+                    <p>
+                        Budding Web Developer! currently working on jquery.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    width: 1000px;
+    height: auto;
+    margin: 0px auto;
+    background-color: #d7f9ff;
+    font-family: sans-serif;
+}
+
+#container h1{
+    padding: 40px;
+}
+
+.main_div{
+    width: 470px;
+    height: auto;
+    margin-bottom: 20px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+}
+
+#info td{
+    padding-bottom: 30px;
+}
+
+#info input[name='description']{
+    width: 200px;
+    height: 100px;
+}
+
+button{
+    display: block;
+    margin-top: 30px;
+    font-size: 15px;
+    padding: 10px 20px;
+}
+
+.card{
+    width: 300px;
+    height: 120px;
+    border: 1px solid black;
+    margin-left: 100px;
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #f9fbf2;
+}
+
+.card h2{
+    margin-bottom: 10px;
+}
+
+.card p{
+    display: none;
+    text-align: left;
+}
+
+.content{
+    margin: 50px 0px 0px 0px;
+    text-align: center;
+}
