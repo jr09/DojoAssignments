@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pokedex Assignment</title>
+        <style>
+            #container{
+                width: 1000px;
+                height: auto;
+                margin: 0 auto;
+                font-family: sans-serif;
+                padding: 40px;
+            }
+
+            #images{
+                width: 700px;
+                height: auto;
+                display: inline-block;
+                vertical-align: top;
+                margin-right: 40px;
+            }
+
+            #pokedex{
+                width: 200px;
+                height: 550px;
+                display: inline-block;
+                vertical-align: top;
+                border: 20px solid red;
+                border-bottom: 50px solid red;
+                margin-left: 0px;
+            }
+
+            img{
+                width: 137px;
+                height: 120px;
+            }
+
+            .pokedex_info{
+                padding: 20px 10px;
+                /*text-align: center;*/
+            }
+
+            .pokedex_info h2{
+                /*margin-left: 15px;*/
+                text-align: center;
+                font-size: 30px;
+            }
+
+        </style>
+        <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                for(var idx=1; idx<=151; idx++){
+                    var str = '<img id="'+idx+'" src="http://pokeapi.co/media/img/'+idx+'.png" alt="img'+idx+' here"/ />';
+                    $('#images').append(str);
+                }
+
+                $(document).on('click', 'img', function(){
+                    var id = $(this).attr('id');
+                    var get_str = 'http://pokeapi.co/api/v1/pokemon/'+id+'/';
+                    $.get(get_str, function(res){
+                        console.log(res);
+                        var name = '<h2>'+res.name+'</h2>';
+                        console.log(name);
+                        var img = '<img src="http://pokeapi.co/media/img/'+id+'.png" alt="img'+id+' here"/>'
+                        console.log(img);
+                        var list = '<h3>Types</h3><ul>';
+                        for(var idx = 0; idx<res.types.length;idx++){
+                            list += '<li>'+res.types[idx].name+'</li>';
+                        }
+                        list+='</ul>'
+                        console.log(list);
+                        var height = '<h3>Height</h3><br/ >'+res.height;
+                        console.log(height);
+                        var weight = '<h3>Weigth</h3><br />'+res.weight;
+                        console.log(weight);
+
+                        var poke_object = '<div class="pokedex_info">'+name+img+list+height+weight;
+
+                        $('#pokedex').html(poke_object);
+                    },'json');
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <h3>Assignment: What's that Pokemon? Build your own Pokedex</h3>
+            <div id="images">
+            </div>
+            <div id="pokedex">
+                <div class="pokedex_info">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
