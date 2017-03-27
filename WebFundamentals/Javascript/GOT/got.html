@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>GOT Assignment</title>
+        <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <style type="text/css">
+            #container{
+                width: 910px;
+                height: auto;
+                margin: 0 auto;
+                font-family: sans-serif;
+            }
+            img{
+                width: 200px;
+                height: 150px;
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 20px;
+                margin-top: 30px;
+            }
+            #info{
+                width: 500px;
+                height: 200px;
+                border: 1px solid black;
+                margin: 100px auto;
+            }
+            #info h4{
+                margin-top: -10px;
+                margin-left: 10px;
+                background: white;
+                width: 110px;
+                text-align: center;
+            }
+            p{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('img').click(function(){
+                    var url = 'http://www.anapioficeandfire.com/api/houses/'+$(this).attr('id')+'/';
+                    $.get(url, function(res){
+
+                        $('#info').find('p').empty();
+
+                        var str = '<p>Name: '+res.name+'</p>';
+                        str+='<p>Words: '+res.words+'</p>';
+
+                        var titles = '';
+                        for(var idx = 0; idx<res.titles.length;idx++){
+                            titles+=res.titles[idx];
+                            if(idx<res.titles.length-1) titles+=', '
+                        }
+
+                        str+='<p><br /><br />Titles: '+titles+'</p>';
+
+                        $('#info').append(str);
+                    }, 'json');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <h2>Assignment: An API of Ice and Fire</h2>
+            <img id="362" src="stark.jpg" alt="stark img here"/>
+            <img id="378" src="targaryen.jpg" alt="targaryen img here"/>
+            <img id="229" src="lannister.jpg" alt="lannister img here"/>
+            <img id="16" src="baratheon.png" alt="baratheon img here"/>
+
+            <div id="info">
+                <h4>House Details</h4>
+            </div>
+        </div>
+    </body>
+</html>
