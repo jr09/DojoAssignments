@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+#container{
+    background-color: black;
+    /*margin: 0 auto;*/
+    width: 600px;
+    height: auto;
+}
+
+#world{
+    /*margin: 0 50px;*/
+}
+
+#brick, #coin, #empty, #fruit{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+}
+#score{
+    color: white;
+    width: 50px;
+    height: 30px;
+    border: 1px solid white;
+    text-align: center;
+    padding-top: 10px;
+    position: absolute;
+    top: 20px;
+    left: 540px;
+}
+
+#brick{
+    background: blue;
+}
+
+#pacman{
+    background-image: url('pacman.gif');
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+#ghost{
+    background-image: url('ghost.gif');
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+#fruit{
+    background: url('pineapple.gif');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#coin{
+    background: url('coin.gif');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
