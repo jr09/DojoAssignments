@@ -1,0 +1,12 @@
+def convert(arg1):
+    list1 = arg1.items()
+    print list1
+
+
+my_dict = {
+  "Speros": "(555) 555-5555",
+  "Michael": "(999) 999-9999",
+  "Jay": "(777) 777-7777"
+}
+
+convert(my_dict)
