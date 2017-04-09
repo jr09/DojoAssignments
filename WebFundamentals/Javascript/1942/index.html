@@ -1,0 +1,211 @@
+<html>
+<head>
+	<title>1942 Game</title>
+
+<style type="text/css">
+	body{
+		background-color:black;
+	}
+	#container{
+		background: url('clouds.png');
+		width:1000px;
+		height:550px;
+	}
+	#hero{
+		background: url('1942.gif');
+		background-position: -85px -180px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.explosion{
+		background: url('1942.gif');
+		background-position: -114px -34px;
+		width: 24px;
+		height: 24px;
+		position:absolute;
+	}
+	.enemy1{
+		background: url('1942.gif');
+		background-position: -30px -10px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.enemy2{
+		background: url('1942.gif');
+		background-position: -66px -15px;
+		width:23px;
+		height:12px;
+		position:absolute;
+	}
+	.bullet{
+		background: url('1942.gif');
+		background-position: -185px -400px;
+		width:18px;
+		height:18px;
+		position:absolute;
+	}
+	#score{
+		position:absolute;
+		border:10px solid red;
+		top:20px;
+		left:800px;
+		background-color:white;
+		padding:10px;
+		font-size:30px;
+		font-family: Arial;
+	}
+</style>
+</head>
+<body>
+	<div id='container'>
+		<div id='hero'></div>
+		<div id='enemies'></div>
+		<div id='bullets'></div>
+		<div id="explosions"></div>
+	</div>
+	<div id='score'>0</div>
+<script type="text/javascript">
+
+	var score = 0;
+
+	var hero = {
+		x:500, y:280
+	}
+	var enemy_pos = [{x:100, y:20}, {x:200, y:110}, {x:300, y:130}, {x:400, y:500}, {x:500, y:410}, {x:600, y:10}, {x:700, y:90}]; // top:y, left:x
+
+	var bullets = [];
+
+	display_enemies();
+	display_hero();
+
+	function display_score(){
+		document.getElementById('score').innerHTML = score;
+	}
+
+	function display_enemies(){
+		output = '';
+		for(var idx = 0; idx < enemy_pos.length-1;idx++){
+			output += '<div class="enemy1" style="top:'+enemy_pos[idx].y+'px; left:'+enemy_pos[idx].x+'px;"></div>'
+		}
+		output += '<div class="enemy2" style="top:'+enemy_pos[idx].y+'px; left:'+enemy_pos[idx].x+'px;"></div>'
+		document.getElementById('enemies').innerHTML = output;
+	}
+
+	function display_hero(){
+		document.getElementById('hero').style.top = hero.y+'px';
+		document.getElementById('hero').style.left = hero.x+'px';
+	}
+
+	function display_bullets(){
+			var output = '';
+			for(var idx=0; idx<bullets.length; idx++){
+				output += '<div class="bullet" style="top:'+bullets[idx].y+'px; left:'+bullets[idx].x+'px;"></div>';
+			}
+			document.getElementById('bullets').innerHTML = output;
+	}
+
+	function reset_enemy(idx){
+		enemy_pos[idx].y = 10;
+		enemy_pos[idx].x = Math.floor(Math.random()*980);
+	}
+
+	function remove_bullet(idx){
+		var temp = bullets[idx];
+		bullets[idx] = bullets[bullets.length-1];
+		bullets[bullets.length-1] = temp;
+		bullets.pop();
+	}
+
+	function reset_hero(){
+		hero.x = 500;
+		hero.y = 280;
+		setTimeout(function(){
+			document.getElementById('hero').style.visibility = 'visible';
+			display_hero();
+		},1000);
+	}
+
+	function show_explosion(idx){
+		var output = '<div class="explosion" style="top:'+enemy_pos[idx].y+'px;left:'+enemy_pos[idx].x+'px;"></div>'
+		document.getElementById('explosions').innerHTML = output+'<audio src="explode.mp3" autoplay="autoplay" preload="auto"></audio>';
+		setTimeout(function(){
+			document.getElementById('explosions').innerHTML = '';
+		},1000);
+	}
+
+	document.onkeydown = function(e){
+		if(e.keyCode == 40 && hero.y+20<540){
+			hero.y += 20;
+		}
+		else if (e.keyCode == 38 && hero.y-20>0){
+			hero.y -= 20;
+		}
+		else if (e.keyCode == 37 && hero.x-20>0){
+			hero.x -= 20;
+		}
+		else if(e.keyCode == 39 && hero.x+20<1000){
+			hero.x += 20;
+		}
+		else if(e.keyCode == 32){
+			bullets.push({x:hero.x+6, y:hero.y-10});
+		}
+		display_hero();
+		display_bullets();
+	}
+
+	setInterval(function(){
+		for(var idx=0;idx<enemy_pos.length;idx++){
+			enemy_pos[idx].y +=10;
+			if(enemy_pos[idx].y>540){
+				reset_enemy(idx);
+			}
+		}
+		display_enemies();
+	}, 100)
+
+	setInterval(function(){
+		for(var idx=0; idx<bullets.length;idx++){
+			bullets[idx].y -= 10;
+			if(bullets[idx].y<=10){
+				remove_bullet(idx);
+			}
+		}
+		display_bullets();
+	},50);
+
+	setInterval( function(){
+		if(bullets.length > 0 && enemy_pos.length > 0){
+			for(var idx = 0; idx<enemy_pos.length; idx++){
+				for(var jdx = 0; jdx<bullets.length; jdx++){
+					if((Math.abs(enemy_pos[idx].y - bullets[jdx].y)<=20) && (Math.abs(enemy_pos[idx].x - bullets[jdx].x)<=20)){
+						remove_bullet(jdx);
+						show_explosion(idx);
+						reset_enemy(idx);
+						score += 10;
+						display_score();
+					}
+				}
+			}
+		}
+	}, 10);
+
+	setInterval(function(){
+		if(enemy_pos.length >0){
+			for(var idx = 0; idx<enemy_pos.length; idx++){
+				if((Math.abs(enemy_pos[idx].y - hero.y)<=20) && (Math.abs(enemy_pos[idx].x - hero.x)<=20)){
+					document.getElementById('hero').style.visibility = 'hidden';
+					show_explosion(idx);
+					reset_hero();
+					score -= 500;
+					display_score();
+					reset_enemy(idx);
+				}
+			}
+		}
+	},10);
+</script>
+
+</body>
+</html>
