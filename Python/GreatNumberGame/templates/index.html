@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>the number game</title>
+        <link rel="stylesheet" type="text/css" href={{url_for('static', filename='index_css.css')}}/>
+        <!-- <script type=text/javascript src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var num = {{session['number']}}
+                alert('yoooo'+num);
+            });
+        </script> -->
+        <!-- <script type="text/javascript" src={{url_for('static', filename='index_js.js')}}></script> -->
+    </head>
+    <body>
+        <div id="main">
+            <h1>Welcome to the Great Number Game</h1><br /><br />
+            <h3>I'm thinking of a number between 1 and 100</h3>
+            <h3>Take a guess!</h3>
+            {% if result == 0 %}
+                <div id="low" class="result">
+                    <h2>Too Low!</h2>
+                </div>
+            {% elif result == 1 %}
+                <div id="high" class="result">
+                    <h2>Too High!</h2>
+                </div>
+            {% elif result == 2%}
+                <div id="perfect" class="result">
+                    <h2>{{session['number']}} was the number!</h2>
+                    <a href="/clear"><button>Play again</button></a>
+                </div>
+            {% endif %}
+            <form action="/calculate" method="post">
+                <input id="user_box" type="text" name="user_num"/><br /><br />
+                <input id="submit_button" type="submit" value="Submit!"/>
+            </form>
+        </div>
+    </body>
+</html>
