@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DojoSurvey/</title>
+    </head>
+    <body>
+        <h1>Welcome to the Dojo Survey Assignment!</h1>
+        <form action='/result' method='post'>
+            <table>
+                <tr>
+                    <td>Your name:</td>
+                    <td><input type="text" name="first_name" placeholder="Tony Stark"/></td>
+                </tr>
+                <tr>
+                    <td>Dojo Location:</td>
+                    <td>
+                        <select name="location">
+                            <option value="San Jose">San Jose</option>
+                            <option value="Seattle">Seattle</option>
+                            <option value="Dallas">Dallas</option>
+                            <option value="New York">New York</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Favourite Language:</td>
+                    <td>
+                        <select name="languages">
+                            <option value="Python">Python</option>
+                            <option value="C#">C#</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="HTML">HTML</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comment (optional):</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <input type="text" name="comments" placeholder="You are awesome!" style="width:300px; height:100px;"/>
+                </tr>
+            </table>
+            <input type="submit" value="Done!"/>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:red;font-size:10px;">*{{message}}*</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </body>
+</html>

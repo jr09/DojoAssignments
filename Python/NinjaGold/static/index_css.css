@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#main{
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.score{
+        margin-left: 20px;
+        padding-top: 20px;
+}
+
+.area{
+    width: 180px;
+    height: 180px;
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+    /*margin-left: 30px;*/
+    margin: 20px 0px 20px 30px;
+    text-align: center;
+}
+
+.heading{
+    position: relative;
+    top: 30px;
+    /*left: 70px;*/
+}
+
+.rule{
+    font-weight: lighter;
+    font-size: 15px;
+    position: relative;
+    top: 50px;
+}
+
+.button{
+    position: relative;
+    top: 80px;
+    /*left: 60px;*/
+    border: 1px solid black;
+    background: white;
+    box-shadow: 2px 2px 2px black;
+}
+
+.activities{
+    width: 500px;
+    height: 100px;
+    border: 1px solid black;
+    overflow-y: auto;
+    font-size: 12px;
+    padding-left: 10px;
+    margin-left: 30px;
+}
+
+.activities p{
+    color: red;
+    margin-bottom: 0px;
+}
+
+#activities_head, a{
+    margin-left: 30px;
+}

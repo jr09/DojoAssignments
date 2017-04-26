@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Counter</title>
+        <link rel="stylesheet" type="text/css" href='{{url_for('static', filename='index_css.css')}}'/>
+    </head>
+    <body>
+        <div id="main_div">
+            <h1>Counter</h1>
+            <h4>{{session['counter']}} times</h4>
+            <a href="/ninja"><button>Ninja Mode</button></a>
+            <a href="/hacker"><button>Hacker Mode</button></a>
+        </div>
+    </body>
+</html>
