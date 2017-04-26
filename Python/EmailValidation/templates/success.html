@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Email Validation</title>
+    </head>
+    <body>
+        <h3>The email address you entered {{new_email[0]['email']}} has been successfully added!</h3>
+        <h2>Email addresses added:</h2>
+        <table>
+            {% for users in all_usrs %}
+                <form action="/delete/{{users['id']}}" method="post">
+                    <tr>
+                        <td>{{users['email']}}</td>
+                        <td>{{users['created_at']}}</td>
+                        <td><input type="submit" value="Delete"/></td>
+                    </tr>
+                </form>
+            {% endfor %}
+        </table>
+        <a href="/"><button>Home!</button></a>
+    </body>
+</html>
