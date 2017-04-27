@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Full Friends</title>
+    </head>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        table th{
+            text-align: left;
+        }
+        th, td{
+            padding-right: 30px;
+        }
+        p{
+            color: red;
+            font-style: italic;
+            font-size: 10px;
+        }
+        form{
+            display: inline;
+        }
+    </style>
+    <body>
+        <h1>Wecome to the Full Friends Assignment!</h1>
+        {% if user_objs|length %}
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                {% for user_obj in user_objs%}
+                    <tr>
+                        <td>{{user_obj['f_name']}}</td>
+                        <td>{{user_obj['l_name']}}</td>
+                        <td>{{user_obj['email']}}</td>
+                        <td>
+                            <form action="/friends/{{user_obj['id']}}/edit">
+                                <button type="submit">Edit</button>
+                            </form>
+                            <form action="/friends/{{user_obj['id']}}/delete">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                        <!-- <td><a href='/friends/{{user_obj['id']}}/edit'><button type="submit">Edit</button>
+                        </a><a href='/'><button type="submit">Delete</button></a></td> -->
+                    </tr>
+                {% endfor %}
+        {% endif %}
+            </table>
+            <form action="/friends" method="post">
+                <table>
+                    <tr>
+                        <td><label>First Name</label></td>
+                        <td><input type="text" placeholder="tony" name="f_name"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Last Name</label></td>
+                        <td><input type="text" placeholder="stark" name="l_name"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email</label></td>
+                        <td><input type="text" placeholder="tinman@gmail.com" name="email"/></td>
+                    </tr>
+                </table>
+                <button type="submit">Submit!</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>/*{{message}}*/</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    </body>
+</html>
