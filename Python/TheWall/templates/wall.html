@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Wall</title>
+        <!-- <link rel="stylesheet" type="text/css" href={{url_for('static', filename='wall_css.css')}}/> -->
+    </head>
+    <style>
+        #main{
+            width: 900px;
+            height: auto;
+            overflow: scroll;
+            border: 1px solid black;
+            margin: 0px auto;
+            font-family: sans-serif;
+        }
+        #header{
+            border-bottom: 1px solid black;
+            padding: 20px;
+        }
+        #header h3, form{
+            display: inline;
+            text-align: center;
+        }
+        #user_name{
+            margin-left: 500px;
+        }
+
+        #post_message{
+            margin-left: 60px;
+            margin-top: 20px;
+        }
+        .post_button{
+            position: relative;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px black;
+            color: white;
+        }
+        #post_message button{
+            left: 650px;
+            background-color: blue;
+        }
+        .msg_comment button{
+            left: 605px;
+            background-color: green;
+        }
+        .message{
+            /*border: 1px solid black;*/
+            width: 740px;
+            margin-left: 60px;
+        }
+        .message p{
+            margin-left: 20px;
+            margin-bottom: 0px;
+        }
+        .msg_comment{
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+        .comment{
+            margin-left: 40px;
+            /*border: 1px solid black;*/
+        }
+        .comment p{
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+        .curr_user{
+            display: inline-block;
+        }
+        .curr_user button{
+            background-color: red;
+        }
+    </style>
+    <body>
+
+        <!-- checking if valid session, else need to login -->
+
+        {% if session['id'] == user_obj['id']%}
+            <div id="main">
+
+                <!-- div to display user name and coding dojo wall heading -->
+
+                <div id="header">
+                    <h3>CodingDojo Wall</h3>
+                    <h3 id="user_name">Welcome {{user_obj['first_name']}}</h3>
+                    <form action="/logout/{{user_obj['id']}}" method="post">
+                        <button type="submit">Log Out</button>
+                    </form>
+                </div>
+
+                <!-- div to display post message box nad post button -->
+
+                <div id="post_message">
+                    <form action="/add_message/{{user_obj['id']}}" method="post">
+                        <label>Post a message</label><br />
+                        <textarea name="message_text" rows="5" cols="120" style="border:2px solid black;"></textarea><br />
+                        <button class="post_button" type="submit">Post message!</button>
+                    </form>
+                </div>
+
+                <!-- div to display all posts -->
+
+                <div id="posts">
+                    {% if messages|length > 0 %}
+                        {% for message in messages %}
+                            <div class="message">
+                                <h3 class="curr_user">{{message['user_fullname']}} - {{message['msg_created_at']}}</h3>
+                                {% if message['user_id'] == user_obj['id'] %}
+                                    <form class="curr_user" action="/delete_msg/{{message['user_id']}}/{{message['message_id']}}" method="post">
+                                        <button class="post_button" type="submit">Delete</button>
+                                    </form>
+                                {% endif %}
+                                <p>{{message['message']}}</p>
+                                {% if comments|length > 0 %}
+                                    {% for comment in comments %}
+                                        {% if comment['message_id'] == message['message_id'] %}
+
+                                        <!-- div ti display all comments for a post -->
+
+                                            <div class="comment">
+                                                <h3>{{comment['user_fullname']}} - {{comment['comment_created_at']}}</h3>
+                                                <p>{{comment['comment_text']}}</p>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <!-- div to add comments for a post, always display at end of comments -->
+
+                            <div class="msg_comment">
+                                <form action="/add_comment/{{user_obj['id']}}/{{message['message_id']}}" method="post">
+                                    <label>Post a Comment</label><br />
+                                    <textarea name="comment_text" rows="3" cols="113" style="border:2px solid black;"></textarea><br />
+                                    <button class="post_button" type="submit">Post Comment!</button>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+
+        <!-- ask to login in case of invalid session -->
+
+            <h3>Please sign in to continue...</h3>
+            <a href="/"><button>Login Page</button></a>
+        {% endif %}
+    </body>
+</html>

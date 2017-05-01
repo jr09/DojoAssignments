@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Wall</title>
+    </head>
+    <style>
+        body{
+            font-family: sans-serif;
+            font-weight: lighter;
+        }
+        h3{
+            color: blue;
+        }
+        p{
+            margin: 0;
+            padding: 0;
+            color: red;
+            font-size: 10px;
+            font-style: italic;
+        }
+    </style>
+    <body>
+        <h2>Welcome to The Wall Assignment!!</h2>
+        <h3>If you have already registered please login below:-)</h3>
+
+        <!-- form for login -->
+
+        <form action="/login" method="post">
+            <table>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email"/></td>
+                    {% with messages = get_flashed_messages(category_filter=['login_email']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <td><p>/*{{message}}*/</p></td>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="pwd"/></td>
+                    {% with messages = get_flashed_messages(category_filter=['login_pwd']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <td><p>/*{{message}}*/</p></td>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </tr>
+            </table>
+            <button type="submit">Login!</button>
+        </form>
+        <h3>If you're a first time user, please Register below before logging in:-)</h3>
+
+        <!-- form for registration -->
+
+        <form action="/register" method="post">
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="f_name"/></td>
+                    {% with messages = get_flashed_messages(category_filter=['f_name']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <td><p>/*{{message}}*/</p></td>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="l_name"/></td>
+                    {% with messages = get_flashed_messages(category_filter=['l_name']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <td><p>/*{{message}}*/</p></td>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email"/></td>
+                    {% with messages = get_flashed_messages(category_filter=['email']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <td><p>/*{{message}}*/</p></td>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="pwd"/></td>
+                    {% with messages = get_flashed_messages(category_filter=['pwd']) %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <td><p>/*{{message}}*/</p></td>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td><input type="password" name="pwd_confirm"/></td>
+                </tr>
+            </table>
+            <button type="submit">Register!</button>
+        </form>
+    </body>
+</html>
