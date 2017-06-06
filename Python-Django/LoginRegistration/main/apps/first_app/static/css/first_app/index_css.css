@@ -1,0 +1,49 @@
+body{
+    font-family: "Century Gothic", sans-serif;
+}
+h1{
+    font-weight: lighter;
+}
+.register_login{
+    margin-left: 200px;
+    display: inline-block;
+    vertical-align: top;
+}
+.register_login label{
+    width: 150px;
+    display: inline-block;
+}
+.register_login h2{
+    margin-left: 90px;
+}
+.register_login input{
+    border: none;
+    border-bottom: 0.1px solid grey;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 35px;
+    font-size: 15px;
+}
+.register_login form{
+    border: 0.1px solid black;
+    width: 250px;
+    display: inline-block;
+    padding: 30px 40px;
+}
+.register_login button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    color: white;
+    background-color: blue;
+}
+.errors{
+    margin-left: 200px;
+    margin-top: 30px;
+}
+p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: red;
+    font-style: italic;
+}

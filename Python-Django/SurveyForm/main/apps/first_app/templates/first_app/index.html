@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Survey Form</title>
+    </head>
+    <style>
+        body{
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+        .form_row{
+            margin-bottom: 20px;
+        }
+        select{
+            width: 100px;
+        }
+        option{
+            text-align: center;
+        }
+    </style>
+    <body>
+        <h1>Welcome to the Django Survey Form Assignment!</h1>
+        <form action="/survey/process" method="post">
+            {% csrf_token %}
+            <div class="form_row">
+                <label>Your Name:</label><br />
+                <input type="text" name="name"/>
+            </div>
+            <div class="form_row">
+                <label>Location:</label><br />
+                <select name="location">
+                    <option value="sanjose">San Jose</option>
+                    <option value="seattle">Seattle</option>
+                    <option value="dallas">Dallas</option>
+                    <option value="newyork">New York</option>
+                </select>
+            </div>
+            <div class="form_row">
+                <label>Favourite Language:</label><br />
+                <select name="language">
+                    <option value="cpp">C++</option>
+                    <option value="java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="js">JavaScript</option>
+                </select>
+            </div>
+            <div class="form_row">
+                <label>Comment:</label><br />
+                <textarea name="comment" rows="8" cols="50"></textarea>
+            </div>
+            <button type="submit">Submit!</button>
+        </form>
+    </body>
+</html>

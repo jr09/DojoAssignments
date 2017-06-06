@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Belt Reviewer-Home</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Welcome {{user_name}}</h1>
+            <a href="{% url 'first_app:addBookReview' %}">Add Book and Review</a>
+            <form action="{% url 'logreg:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+        <div class="review_section">
+            <h2>Recent Book Reviews</h2>
+            {% if reviews %}
+                {% for review in reviews %}
+                <div class="review">
+                    <h4><a href="/books/{{review.book.id}}">{{review.book.title}}</a></h4>
+                    <h4>Rating: {{review.rating}}</h4>
+                    <h4><span><a href="/users/{{review.reviewer.id}}">{{review.reviewer.fname}}</a></span> says: {{review.review}}</h4>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="book_section">
+            <h2>Books with reviews</h2>
+            {% if books %}
+                {% for book in books %}
+                    <h4><a href="/books/{{book.id}}">{{book.title}}</a></h4>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </body>
+</html>

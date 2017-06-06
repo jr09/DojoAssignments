@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Survey result</title>
+    </head>
+    <style>
+        body{
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+        h2{
+            text-decoration: underline;
+        }
+        div{
+            width: 350px;
+            height: 350px;
+            border: 0.2px solid black;
+            margin: 0 auto;
+            padding-left: 30px;
+        }
+        table{
+            margin-left: 20px;
+        }
+        button{
+            position: relative;
+            top: 100px;
+            left: 250px;
+            height: 30px;
+            width: 60px;
+            color: white;
+            background-color: blue;
+        }
+    </style>
+    <body>
+        <div>
+            <h2>Submitted Information</h2>
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>{{request.session.user_obj.name}}</td>
+                </tr>
+                <tr>
+                    <td>Dojo Location:</td>
+                    <td>{{request.session.user_obj.location}}</td>
+                </tr>
+                <tr>
+                    <td>Language:</td>
+                    <td>{{request.session.user_obj.language}}</td>
+                </tr>
+                <tr>
+                    <td>Comment:</td>
+                    <td>{{request.session.user_obj.comment}}</td>
+                </tr>
+            </table>
+            <a href="/"><button>Go back</button></a>
+        </div>
+    </body>
+</html>

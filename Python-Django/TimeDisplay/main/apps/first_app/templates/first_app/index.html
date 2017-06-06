@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Time Display</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'first_app/css/mycss.css' %}" media="screen" title="no title" charset="utf-8"/>
+    </head>
+    <body>
+        <h1 id="header">Hi, Jivesh!</h1>
+        <div id="date_obj">
+            <h1>{{curr_date}}</h1>
+            <h1>{{curr_time}}</h1>
+        </div>
+    </body>
+</html>

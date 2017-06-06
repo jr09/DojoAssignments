@@ -1,0 +1,55 @@
+body{
+    font-family: "Century Gothic", sans-serif;
+    font-weight: lighter;
+}
+h1, h3{
+    font-weight: lighter;
+}
+.header h1{
+    display: inline-block;
+    vertical-align: middle;
+}
+.header form{
+    display: inline-block;
+    vertical-align: middle;
+}
+.header button, .post_form button{
+    width: 70px;
+    height: 30px;
+    color: white;
+    background-color: red;
+    margin-left: 300px;
+    border: none;
+    display: inline-block;
+}
+.post_form textarea{
+    display: block;
+    font-size: 15px;
+}
+.post_form button{
+    display: inline-block;
+    margin: 20px 0px;
+    background-color: green;
+    vertical-align: middle;
+}
+.post_form a{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 250px;
+}
+.secret_post{
+    margin-bottom: 20px;
+}
+.secret_post h3{
+    display: inline;
+    margin-right: 20px;
+}
+.secret_post a{
+    display: inline;
+}
+.secret_post a:visited{
+    color: blue;
+}
+.likes{
+    font-style: italic;
+}

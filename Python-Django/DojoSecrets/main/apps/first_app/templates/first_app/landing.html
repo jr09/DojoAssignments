@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Landing Page</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'first_app/landing_css.css' %}" media="screen" title="no title"/>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Hello {{name}}</h1>
+            <form action="/logout" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+        <div class="post_form">
+            <form action="/addSecret/{{user_id}}" method="post">
+                {% csrf_token %}
+                <textarea name="secret" rows="10" cols="50"></textarea>
+                <button type="submit">Post!</button>
+                <a href="/popularSecrets/{{user_id}}"><h2>Most Popular Secrets</h2></a>
+            </form>
+        </div>
+        <h1>Recent Secrets...</h1>
+        {% if secrets_likes %}
+            {% for secret_like in secrets_likes %}
+                <div class="secret_post">
+                    <h3>{{secret_like.0.secret}}</h3>
+                    <h3 class="likes">{{secret_like.1}} likes</h3>
+                    {% if secret_like.0.author.id|add:0 == user_id|add:0 %}
+                        <h3>You posted this</h3>
+                        <a href="/delete/{{secret_like.0.id}}">Delete</a>
+                    {% else %}
+                        {% if secret_like.2 == 1 %}
+                            <h3>You liked this</h3>
+                        {% else %}
+                            <a href="/like/{{user_id}}/{{secret_like.0.id}}">Like</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>

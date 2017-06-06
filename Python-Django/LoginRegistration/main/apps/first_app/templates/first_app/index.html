@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'css/first_app/index_css.css' %}" media="screen" title="no title"/>
+    </head>
+    <body>
+        <h1>{{message}}</h1>
+        <div class="register_login">
+            <h2>Registration</h2>
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <div class="entry">
+                    <label>First Name</label><br />
+                    <input type="text" name="f_name"/>
+                </div>
+                <div class="entry">
+                    <label>Last Name</label><br />
+                    <input type="text" name="l_name"/>
+                </div>
+                <div class="entry">
+                    <label>Email</label><br />
+                    <input type="text" name="email"/>
+                </div>
+                <div class="entry">
+                    <label>Password</label><br />
+                    <input type="password" name="pwd"/>
+                </div>
+                <div class="entry">
+                    <label>Confirm Password</label><br />
+                    <input type="password" name="conf_pwd"/>
+                </div>
+                <button type="submit">Register!</button>
+            </form>
+        </div>
+        <div class="register_login">
+            <h2>Log In</h2>
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <div class="entry">
+                    <label>Email</label><br />
+                    <input type="text" name="email"/>
+                </div>
+                <div class="entry">
+                    <label>Password</label><br />
+                    <input type="password" name="pwd"/>
+                </div>
+                <button type="submit">Log In!</button>
+            </form>
+        </div>
+        <div class="errors">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if 'error' in message.tags  %}
+                        <p>/* {{message}} */</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </body>
+</html>

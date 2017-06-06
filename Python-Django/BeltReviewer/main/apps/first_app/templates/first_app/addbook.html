@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add Book</title>
+    </head>
+    <body>
+        <div class="header">
+            <a href="{% url 'first_app:books' %}">Home</a>
+            <form action="{% url 'logreg:logout' %}">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+        <div class="addbook">
+            <h1>Add a new book Title and Review</h1>
+            <form action="/addthisbook" method="post">
+                {% csrf_token %}
+                <h3><label>Book Title</label></h3>
+                <input name="title" type="text"/>
+                <h3>Author:</h3>
+                <input name="author_method" type="radio" value="author_add"/>
+                <h4>Add new author:</h4>
+                <input name="author" type="text"/><br />
+                {% if authors %}
+                    <input name="author_method" type="radio" value="author_select"/>
+                    <h4>Or select author from list</h4>
+                    <select name="author_list">
+                        {% for author in authors %}
+                            <option value="{{author.id}}">{{author.fname}} {{author.lname}}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+                <h3><label>Review:</label></h3>
+                <textarea name="review" rows="10" cols="30"></textarea>
+                <h3>Rating</h3>
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit">Add Review!</button>
+            </form>
+        </div>
+    </body>
+</html>
