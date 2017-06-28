@@ -14,7 +14,7 @@ var server = app.listen(8000, function(){
     console.log('Listening on port 8000 of local host!:)');
 });
 
-var io = require('socket.io').listen(server);
+var io = require('socket.io')(server);
 
 var users = [];
 var users_dictionary = {};
@@ -42,11 +42,8 @@ io.sockets.on('connection', function(socket){
     socket.on('check_user_name', function(data){
         console.log(`Request to check availability of ${data.name} received!!`);
         console.log(users_dictionary);
-        if(users_dictionary[data.name]){
-            socket.emit('user_name_validity', {result: false});
-        }
-        else{
-            socket.emit('user_name_validity', {result: true});
-        }
+
+        data.result = users_dictionary[data.name] === undefined;
+        socket.emit('user_name_validity', data);
     });
 });

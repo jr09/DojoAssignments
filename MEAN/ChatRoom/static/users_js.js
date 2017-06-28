@@ -1,12 +1,15 @@
 var user_name = '';
-var user_name_valid = false;
+// var user_name_valid = false;
 var prompt_message = 'Please enter a user name to continue';
 
-function get_user_name(){
-    while(user_name.length == 0){
+function get_user_name(cb){
+    do {
         user_name = prompt(prompt_message);
         prompt_message = 'User name cannot be blank';
     }
+    while(!user_name || user_name.trim().length === 0);
+
+    cb(user_name);
 }
 
 $(document).ready(function(){
@@ -15,28 +18,12 @@ $(document).ready(function(){
 
     socket.on('user_name_validity', function(data){
         alert(`Received ${data.result} from server!`);
-        if(data.result == true){
-            user_name_valid = true;
+        if(data.result){
+            socket.emit('users_new_user', { name: data.name });
         }
         else{
             prompt_message = 'User name already taken, please enter a different user name';
-        }
-    });
-
-    while(!user_name_valid){
-        get_user_name();
-        socket.emit('check_user_name', {name:user_name});
-    }
-
-    socket.emit('users_new_user', {name: user_name});
-
-    socket.on('user_name_validity', function(data){
-        alert(`Received ${data.result} from server!`);
-        if(data.result == true){
-            user_name_valid = true;
-        }
-        else{
-            prompt_message = 'User name already taken, please enter a different user name';
+            get_user_name(validateUserName);
         }
     });
 
@@ -62,4 +49,10 @@ $(document).ready(function(){
             socket.emit('disconnect_user', {name:user_name});
         }
     });
+
+    function validateUserName(username) {
+        socket.emit('check_user_name', { name: username });
+    }
+
+    get_user_name(validateUserName);
 });
