@@ -7,11 +7,42 @@
     <style>
         .users{
             width: 120px;
-            height: 120px;
+            height: 60px;
             display: inline-block;
             border: 0.5px solid black;
             margin: 20px;
             text-align: center;
+            overflow-x: scroll;
+            vertical-align: middle;
+        }
+        #users_panel, #chat_panel{
+            margin: 0 auto;
+            width: 975px;
+            height: 100px;
+            border: 0.5px solid black;
+            overflow: scroll;
+        }
+        #chat_panel{
+            height: 150px;
+        }
+        textarea, button{
+            display: inline-block;
+            vertical-align: middle
+        }
+        button{
+            width: 60px;
+            height: 40px;
+            border: none;
+        }
+        textarea{
+            font-size: 15px;
+        }
+        #message_panel{
+            margin: 0 auto;
+            width: 975px;
+        }
+        #chat_panel p{
+            margin-left: 10px;
         }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -19,6 +50,14 @@
     <script type="text/javascript" src="users_js.js"></script>
     <body>
         <h1>Welcome to the Dojo Chat Room!</h1>
-        <h2>Online Users..</h2>
+        <h2>Online Users</h2>
+        <div id="users_panel"></div>
+        <h2>Chat Room</h2>
+        <div id="chat_panel"></div>
+        <h2>Post Message</h2>
+        <div id="message_panel">
+            <textarea id="message" rows="2" cols="100"></textarea>
+            <button>Post!</button>
+        </div>
     </body>
 </html>
