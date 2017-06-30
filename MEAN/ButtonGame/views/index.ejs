@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Epic Button Game</title>
+        <style>
+            body{
+                text-align: center;
+            }
+            #increase, #reset{
+                height: 60px;
+                width: 200px;
+                display: block;
+                margin: 50px auto;
+                font-size: 20px;
+                border: none;
+                color: white;
+            }
+            #increase{
+                background-color: blue;
+            }
+            #reset{
+                background-color: red;
+            }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var socket = io.connect();
+                $('#increase').click(function(){
+                    socket.emit('button_clicked');
+                });
+                $('#reset').click(function(){
+                    socket.emit('reset_button');
+                });
+                socket.on('server_result', function(data){
+                    $('.result').empty();
+                    $('.result').append('<h2>The button has been pushed '+data.button+' time(s)</h2>');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Welcome to the Button Game Assignment</h1>
+        <div class="result">
+        </div>
+        <button id="increase">Push Button</button>
+        <button id="reset">Reset</button>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SurveyForm Home</title>
+        <style>
+            .form_element label{
+                display: inline-block;
+                width: 150px;
+            }
+            .form_element{
+                margin-left: 50px;
+                margin-top: 30px;
+            }
+            button{
+                margin-left: 50px;
+                width: 60px;
+                height: 30px;
+                margin-top: 20px;
+            }
+            .server_response, .random_number{
+                margin-left: 50px;
+                width: 300px;
+                margin-top: 20px;
+            }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+        <script type='text/javascript'>
+            $(document).ready(function(){
+
+                var socket = io.connect();
+
+                $('button:first').click(function(){
+                    // socket.emit('button_clicked', {reason: 'because i want to learn about sockets'});
+                    if($('input[name=name]').val().length > 0){
+                        socket.emit('posting_form', {name: $('input[name=name]').val(), location: $('select[name=location]').val(), language: $('select[name=language]').val(), comment: $('textarea[name=comment]').val()});
+                    }
+                    else{
+                        $('.server_response').empty();
+                        $('.server_response').append('<h2>Name cannot be blank</h2>');
+                    }
+
+                });
+
+                $('form').submit(function(){
+                    return false;
+                });
+
+                socket.on('updated_message', function(data){
+                    console.log(`Server says ${data.response}`);
+                    $('.server_response').empty();
+                    // $('.server_response').append('<h2>'+data.response.name+'</h2><h2>'+data.response.location+'</h2><h2>'+data.response.language+'</h2><h2>'+data.response.comment+'</h2>');
+                    $('.server_response').append('<p>You emitted the following information to the server->'+JSON.stringify(data.response)+'</p>');
+                });
+
+                socket.on('random_number', function(data){
+                    $('.random_number').empty();
+                    $('.random_number').append('<p>Your lucky number from the server is '+data.number+'</p>');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Discovering Sockets in MEAN</h1>
+        <div class="server_response">
+        </div>
+        <div class="random_number">
+        </div>
+        <form action="/result" method="post">
+            <div class="form_element">
+                <label>Your Name :</label>
+                <input type="text" name="name"/>
+            </div>
+            <div class="form_element">
+                <label>Dojo Location :</label>
+                <select name="location">
+                    <option value="Mounatain View">Mountain View</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="New York">New York</option>
+                </select>
+            </div>
+            <div class="form_element">
+                <label>Favourite Language :</label>
+                <select name="language">
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="C++">C++</option>
+                    <option value="Ruby">Ruby</option>
+                </select>
+            </div>
+            <div class="form_element">
+                <label>Comment :</label><br />
+                <textarea name="comment" rows="5" cols="50"></textarea>
+            </div>
+            <button>Submit</button>
+        </form>
+        <a href="/"><button>Reset</button></a>
+    </body>
+</html>
