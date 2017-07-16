@@ -1,0 +1,20 @@
+.navlinks{
+    width: 200px;
+    height: 400px;
+    margin-top: 30px;
+    margin-left: 50px;
+    border: 0.5px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+button{
+    height: 30px;
+    width: 60px;
+    display: block;
+    background-color: white;
+    margin-left: 70px;
+    margin-top: 50px;
+}
+.navlinks h4{
+    margin-top: 0;
+}
