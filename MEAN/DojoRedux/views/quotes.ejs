@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Quotes Dojo Redux</title>
+        <style>
+            .quotes{
+                margin-left: 50px;
+                margin-top: 50px;
+                border-bottom: 0.5px solid black;
+                width: 900px;
+            }
+            .quotes h3{
+                margin-left: 40px;
+                display: inline-block;
+                margin-right: 50px;
+            }
+            .quotes a{
+                display: inline-block;
+            }
+            .quotes button{
+                width: 100px;
+                height: 40px;
+                font-size: 15px;
+                color: white;
+                background-color: blue;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Here are the Awesome Quotes!</h1>
+        <% for(let idx = quotes.length-1; idx>=0; idx--){ %>
+            <div class="quotes">
+                <h2>"<%= quotes[idx].quote_text%>"</h2>
+                <h3>-<%= quotes[idx].name%> at <%= quotes[idx].date_string%></h3>
+                <a href="/upvote/<%= quotes[idx].id%>"><button>Upvote!(<%= quotes[idx].upvotes%>)</button></a>
+            </div>
+        <% } %>
+    </body>
+</html>

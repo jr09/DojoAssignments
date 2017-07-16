@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id='container'>
+  <h1>
+    {{title}}
+  </h1>
+  <table>
+    <th>Email</th>
+    <th>Importance</th>
+    <th>Subject</th>
+    <th>Content</th>
+    <tr *ngFor = 'let obj of objs_list'>
+      <td>{{obj.email | lowercase}}</td>
+      <td *ngIf = 'obj.importance'>High</td>
+      <td *ngIf = '!obj.importance'>Low</td>
+      <td>{{obj.subject}}</td>
+      <td>{{obj.content}}</td>
+    </tr>
+  </table>
+</div>
+

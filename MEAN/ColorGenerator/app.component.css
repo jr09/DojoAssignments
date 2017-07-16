@@ -1,0 +1,14 @@
+#container{
+    margin: 0 auto;
+    width: 900px;
+    font-family: sans-serif;
+    text-align: center;
+}
+#color{
+    height: auto;
+}
+.color_block{
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+}

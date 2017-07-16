@@ -1,0 +1,19 @@
+#container{
+    margin: 0 auto;
+    width: 900px;
+    font-family: sans-serif;
+}
+th, td{
+    font-size: 15px;
+    text-align: left;
+}
+td{
+    width: 150px;
+}
+table{
+    margin-left: 50px;
+    margin-top: 50px;   
+}
+table td:nth-child(4){
+    width: 300px;
+}

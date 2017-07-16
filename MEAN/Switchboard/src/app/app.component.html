@@ -1,0 +1,9 @@
+<div id="container">
+  <h1>{{title}}</h1>
+  <div class="boxes">
+    <ng-container *ngFor = 'let switch of switch_array, let idx = index'>
+      <button *ngIf = 'switch' (click)="change_switch(idx)" [ngClass] = "{'selected':switch}">On</button>
+      <button *ngIf = '!switch' (click)="change_switch(idx)" [ngClass] = "{'selected':switch}">Off</button>
+    </ng-container>
+  </div>
+</div>

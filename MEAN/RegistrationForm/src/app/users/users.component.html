@@ -1,0 +1,74 @@
+<div id="container">
+  <h1>Registration</h1>
+  <fieldset>
+    <legend><h2>Account Information</h2></legend>
+    <form id="user_form" (submit)="formSubmit($event)" #newUser='ngForm'>
+      <div class="form_row">
+        <label>*First Name:</label>
+        <input type="text" name="f_name" required="true" minlength="2" [(ngModel)]="user.f_name" #f_name="ngModel">
+        <ng-container *ngIf='(f_name.touched || f_name.dirty) && f_name.errors'>
+          <div class="form_error" *ngIf='f_name.errors.required'>Field cannot be blank</div>
+          <div class="form_error" *ngIf='f_name.errors.minlength'>Min Length must be {{f_name.errors.minlength.requiredLength}}</div>
+        </ng-container>
+      </div><br>
+      <div class="form_row">
+        <label>*Last Name:</label>
+        <input type="text" name="l_name" required="true" minlength="2" [(ngModel)]="user.l_name" #l_name="ngModel">
+        <ng-container *ngIf='(l_name.touched || l_name.dirty) && l_name.errors'>
+          <div class="form_error" *ngIf='l_name.errors.required'>Field cannot be blank</div>
+          <div class="form_error" *ngIf='l_name.errors.minlength'>Min Length must be {{l_name.errors.minlength.requiredLength}}</div>
+        </ng-container>
+      </div><br>
+      <div class="form_row">
+        <label>*Email:</label>
+        <input type="text" name="email" required="true" minlength="4" pattern='^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$' [(ngModel)]="user.email" #email='ngModel'>
+        <ng-container *ngIf='(email.touched || email.dirty) && email.errors'>
+          <div class="form_error" *ngIf='email.errors.required'>Field cannot be empty</div>
+          <div class="form_error" *ngIf='email.errors.minlength'>Min Length must be {{email.errors.minlength.requiredLength}}</div>
+          <div class="form_error" *ngIf='email.errors.pattern'>Must be a valid email</div>
+        </ng-container>
+      </div><br>
+      <div class="form_row">
+        <label>*Password:</label>
+        <input type="password" name="pwd" required="true" minlength="8" [(ngModel)]="user.pwd" #pwd='ngModel'>
+        <ng-container *ngIf='(pwd.touched || pwd.dirty) && pwd.errors'>
+          <div class="form_error" *ngIf='pwd.errors.required'>Field cannot be empty</div>
+          <div class="form_error" *ngIf='pwd.errors.minlength'>Min Length must be {{pwd.errors.minlength.requiredLength}}</div>
+        </ng-container>
+      </div><br>
+      <div class="form_row">
+        <label>*Confirm Password:</label>
+        <input type="password" name="conf_pwd" required="true" [(ngModel)]="user.conf_pwd" #conf_pwd='ngModel'>
+        <ng-container *ngIf='(conf_pwd.touched || conf_pwd.dirty)'>
+          <div class="form_error" *ngIf='!(pwd.value===conf_pwd.value)'>Password and Confirm Password dont match</div>
+        </ng-container>
+      </div><br>
+      <div class="form_row">
+        <label>*Street Address:</label>
+        <input type="text" name="street_addr" required="true" [(ngModel)]="user.street_addr" #street_addr='ngModel'>
+         <ng-container *ngIf='(street_addr.touched || street_addr.dirty) && street_addr.errors'>
+          <div class="form_error" *ngIf='street_addr.errors.required'>Field cannot be blank</div>
+        </ng-container>
+      </div><br>
+      <div class="form_row">
+        <label>Apt/Unit:</label>
+        <input type="number" name="unit">
+      </div><br>
+      <div class="form_row">
+        <label>*City:</label>
+        <input type="text" name="city" required="true" [(ngModel)]="user.city" #city='ngModel'>
+        <ng-container *ngIf='(city.touched || city.dirty) && city.errors'>
+          <div class="form_error" *ngIf='city.errors.required'>Field cannot be blank</div>
+        </ng-container>
+      </div><br>
+      <div class="form_row">
+        <label>*State:</label>
+        <input type="text" name="state" required="true" [(ngModel)]="user.state" #state='ngModel'>
+        <ng-container *ngIf='(state.touched || state.dirty) && state.errors'>
+          <div class="form_error" *ngIf='state.errors.required'>Field cannot be blank</div>
+        </ng-container>
+      </div><br>
+    </form>
+  </fieldset>
+  <button type="submit" form="user_form" [hidden]="newUser.invalid" >Register</button>
+</div>

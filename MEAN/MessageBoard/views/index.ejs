@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dojo Message Board</title>
+        <style>
+            #container{
+                font-family: sans-serif;
+                margin: 0 auto;
+                width: 900px;
+            }
+            .header{
+
+                border-bottom: 0.5px solid black;
+            }
+            input, textarea{
+                font-size: 20.8px;
+            }
+            form{
+                margin-left: 50px;
+            }
+            button{
+                border: none;
+                height: 30px;
+                width: 100px;
+                background-color: blue;
+                display: block;
+                color: white;
+                margin-left: 520px;
+            }
+            .comment_button{
+                margin-left: 420px;
+                background-color: green;
+            }
+            .post{
+                margin-left: 50px;
+                border-bottom: 0.1px solid red;
+                padding-bottom: 30px;
+            }
+            h4,h5{
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .comment{
+                margin-left: 50px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="header">
+                <h1>The Dojo Message Board</h1>
+            </div>
+            <form action="/post_message" method="post">
+                <h4>Name: </h4>
+                <input name="name" type="text"/>
+                <h4>Message: </h4>
+                <textarea name="post_text" rows="3" cols="60"></textarea>
+                <button>Post Message!</button>
+            </form>
+            <% for(let idx = 0; idx < posts.length; idx++){ %>
+                <div class="post">
+                    <h4>Name: <%= posts[idx].name%></h4>
+                    <h4>Mesage: <%= posts[idx].post_text%></h4>
+                    <% for(let jdx=0; jdx < posts[idx].comments.length; jdx++){%>
+                        <div class="comment">
+                            <h5>Name: <%= posts[idx].comments[jdx].name%></h5>
+                            <h5>Comment: <%= posts[idx].comments[jdx].comment_text%></h5>
+                        </div>
+                    <%} %>
+                    <form action="/addcomment/<%= posts[idx]._id%>" method="post">
+                        <h5>Name: </h5>
+                        <input type="text" name="name"/>
+                        <h5>Comment:</h5>
+                        <textarea name="comment_text" rows="1" cols="50"></textarea>
+                        <button class="comment_button">Add Comment!</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </body>
+</html>

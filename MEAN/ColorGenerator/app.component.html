@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id='container'>
+  <h1>{{title}}</h1>
+  <!--<div class="color_block" *ngFor = 'let color of colors'>
+    <span ng-style="{background-color: color}"></span>
+  </div>-->
+  <ng-container *ngFor='let color of colors'>
+    <div class="color_block" [ngStyle]="{'background-color':color}"></div>
+  </ng-container>
+</div>
+
