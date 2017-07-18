@@ -1,0 +1,26 @@
+<fieldset>
+  <legend><h1>Add Quote</h1></legend>
+  <form id="quote_form" (submit)="formSubmit($event) || newQuote.reset()" #newQuote='ngForm'>
+    
+    <textarea rows="6" cols="50" name="quote_text" required="true" minlength="4" 
+    [(ngModel)]="quote1.quote_text" #quote="ngModel"></textarea><br>
+
+    <label>Author: </label>
+
+    <input type="text" name="author" required="true" minlength="1" 
+    [(ngModel)]="quote1.author" #author="ngModel"><br>
+
+    <button type="submit" form="quote_form" [hidden]="newQuote.invalid">Add Quote!</button>
+
+  </form>
+  <div class="errors">
+    <ng-container *ngIf="(quote.touched || quote.dirty) && quote.errors">
+    <p class="form_error" *ngIf="quote.errors.minlength">Quote must be minimum {{quote.errors.minlength.requiredLength}} characters</p>
+    <p class="form_error" *ngIf="quote.errors.required">Quote field cannot be empty</p>
+  </ng-container>
+  <ng-container *ngIf="(author.touched || author.dirty) && author.errors">
+    <p class="form_error" *ngIf="author.errors.minlength">Author must be minimum {{author.errors.minlength.requiredLength}} characters</p>
+    <p class="form_error" *ngIf="author.errors.required">Author field cannot be empty</p>
+  </ng-container>
+  </div>
+</fieldset>
