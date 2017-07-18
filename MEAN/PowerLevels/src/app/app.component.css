@@ -1,0 +1,29 @@
+#container{
+    width: 900px;
+    margin: 0 auto;
+}
+.PowerComponent{
+    height: auto;
+}
+.PowerComponent form{
+    display: inline-block;
+    vertical-align: top;
+}
+.PowerComponent form h2, input, button{
+    display: inline-block;
+    vertical-align: middle;
+}
+.PowerComponent form h2{
+    margin-right: 30px;
+}
+.PowerComponent input{
+    width: 100px;
+    font-size: 20px;
+    margin-right: 250px;
+}
+img{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    vertical-align: top;
+}

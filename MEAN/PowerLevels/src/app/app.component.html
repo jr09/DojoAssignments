@@ -1,0 +1,23 @@
+<div id="container">
+  <fieldset>
+    <legend>PowerComponent</legend>
+    <div class="PowerComponent">
+      <form id="user_power_level" (submit)="onchange($event)" #newPowerLevel="ngForm">
+      <h2>Inital Power Level</h2>
+      <input type="number" name="powerlevel" [(ngModel)]="powerlevel" min="1" max="100">
+    </form>
+    <img src='../assets/goku.png' alt="goku image here">
+    </div>
+    <app-human-component [mypowerlevel]="powerlevel"></app-human-component>
+
+    <app-saiyan-component [mypowerlevel]="powerlevel"></app-saiyan-component>
+
+    <app-super-saiyan-component [mypowerlevel]="powerlevel"></app-super-saiyan-component>
+    
+    <app-super-saiyan-two-component [mypowerlevel]="powerlevel"></app-super-saiyan-two-component>
+    
+    <app-super-saiyan-three-component [mypowerlevel]="powerlevel"></app-super-saiyan-three-component>
+    
+    <app-super-saiyan-four-component [mypowerlevel]="powerlevel"></app-super-saiyan-four-component>
+  </fieldset>
+</div>

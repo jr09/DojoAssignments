@@ -1,0 +1,12 @@
+.SuperSaiyanComponent{
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.SuperSaiyanComponent h5{
+    margin-top: 0;
+}
