@@ -1,0 +1,18 @@
+<ng-container *ngIf="quotesArray.length>0">
+  <h1>Quotes List</h1>
+  <ng-container *ngFor="let quote of quotesArray">
+    <div class="quote_row">
+      <div class="quote_row_text">
+        <p>{{quote.quote_text}}</p>
+        <h5>-{{quote.author}}</h5>
+      </div>
+      <h3>{{quote.upvotes}}</h3>
+      <div class="options">
+        <!--<button style="background-color: #80cc8b" (click)="voteUp(quote)">Vote Up!</button>
+        <button style="background-color: #3a543e" (click)="downvote(quote)">Vote Down!</button>
+        <button  style="background-color: #262826" (click)="delete(quote)">Delete</button>-->
+        <button (click)="voteUp()">Vote Up!</button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

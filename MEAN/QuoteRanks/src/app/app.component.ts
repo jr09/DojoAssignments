@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,13 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  quotes_child = [];
+  quotesArray:any = [];
 
-  triggeredbychild(eventdata){
-   this.quotes_child = eventdata;
-  }
-
-  quote_option(mode, id){
-    console.log(mode, id);
+  getQuote(eventdata){
+   this.quotesArray.push(eventdata);
+   console.log('im here');
+   console.log(this.quotesArray);
   }
 }

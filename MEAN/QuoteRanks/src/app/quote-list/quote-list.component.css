@@ -1,0 +1,41 @@
+.quote_row{
+    border: 0.5px solid black;
+    display: inline-block;
+    vertical-align: top;
+    width: 900px;
+    margin-bottom: 20px;
+}
+.quote_row_text{
+    /*border: 0.1px solid black;*/
+    display: inline-block;
+    vertical-align: top;
+    width: 700px;
+    height: 100px;
+    overflow: scroll;
+}
+.quote_row_text p{
+    margin-top: 0;
+    margin-left: 5px;
+}
+.quote_row h3{
+    /*border: 0.1px solid black;*/
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    text-align: center;
+}
+.options{
+    /*border: 0.1px solid black;*/
+    display: inline-block;
+    vertical-align: top;
+    width: 80px;
+}
+.options button{
+    width: 80px;
+    height: 30px;
+    color: white;
+    border: none;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

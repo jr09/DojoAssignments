@@ -1,18 +1,4 @@
 <div id="container">
-  <app-quote-form (ataskeventemitter)="triggeredbychild($event)"></app-quote-form>
-  <ng-container *ngIf="quotes_child.length>0">
-    <ng-container *ngFor="let quote of quotes_child">
-      <div class="quote_row">
-        <div class="quote_body">
-          <p>{{quote.quote_text}}</p>
-          <h4>-{{quote.author}}</h4>
-        </div>
-        <div class="quote_options">
-          <button (click)="quote_option(1, quote.id)">Vote Up</button>
-          <button (click)="quote_option(2, quote.id)">Vote Down</button>
-          <button (click)="quote_option(3, quote.id)">Delete</button>
-        </div>
-      </div>
-    </ng-container>
-  </ng-container>
+  <app-quote-form (quoteEventEmitter)="getQuote($event)"></app-quote-form>
+  <app-quote-list [quotesArray]="quotesArray"></app-quote-list>
 </div>

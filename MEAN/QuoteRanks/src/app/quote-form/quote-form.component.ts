@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Quote } from '../quote';
 
 @Component({
@@ -6,25 +6,27 @@ import { Quote } from '../quote';
   templateUrl: './quote-form.component.html',
   styleUrls: ['./quote-form.component.css']
 })
-export class QuoteFormComponent{
-  @Output() ataskeventemitter = new EventEmitter();
-  quotes:Quote[] = [];
+export class QuoteFormComponent implements OnInit{
+  @Output() quoteEventEmitter = new EventEmitter();
 
-  quote1:Quote = new Quote();
+  quote1 = new Quote();
+
+  ngOnInit(){
+  }
 
   formSubmit(event){
     // event.preventDefault();
     this.quote1.upvotes = 0;
     this.quote1.id = Math.floor(Math.random()*1000);
-    this.quotes.push(this.quote1);
-    console.log(this.quotes);
-    this.quote1 = new Quote();
-    this.triggerparent();
+    this.sendQuoteToParent();
   }
 
-  triggerparent(){
-    // console.log('Im here2');
-    // console.log(this.quotes);  
-    this.ataskeventemitter.emit(this.quotes);
+  sendQuoteToParent(){ 
+    this.quoteEventEmitter.emit(this.quote1);
+    this.quote1 = new Quote();
+  }
+
+  voteUp() {
+    console.log(`Received request to upvote`);
   }
 }
