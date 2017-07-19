@@ -25,8 +25,4 @@ export class QuoteFormComponent implements OnInit{
     this.quoteEventEmitter.emit(this.quote1);
     this.quote1 = new Quote();
   }
-
-  voteUp() {
-    console.log(`Received request to upvote`);
-  }
 }

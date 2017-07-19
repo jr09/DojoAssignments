@@ -14,4 +14,8 @@ export class AppComponent {
    console.log('im here');
    console.log(this.quotesArray);
   }
+
+  deleteQuote(eventdata){
+    this.quotesArray.splice(this.quotesArray.indexOf(eventdata), 1);
+  }
 }
