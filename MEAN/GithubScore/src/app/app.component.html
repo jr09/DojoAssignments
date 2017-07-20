@@ -1,0 +1,28 @@
+<div id="container">
+  <div class="form">
+    <h1>Github Score</h1>
+    <form id="userform" (submit)="formSubmit($event) || newUserName.reset()" #newUserName='ngForm'>
+      <label><h3>Github User Name: </h3></label>
+      <input name="username" type="text" required="true" minlength="3" [(ngModel)]="object.name" #username="ngModel">
+      <ng-container *ngIf="(username.touched || username.dirty) && username.errors">
+        <h4 class="form_errors" *ngIf="username.errors.required">Field cannot be empty!</h4>
+        <h4 class="form_errors" *ngIf="username.errors.minlength">Minimum length of {{username.errors.minlength.requiredLength}} is required!</h4>
+      </ng-container>
+      <button [hidden]="newUserName.invalid">Calculate my github score!</button>
+    </form>
+  </div>
+  <div class="results">
+    <ng-container *ngIf="!error.code">
+      <h1>Your Score: {{score}}</h1>
+      <h2 *ngIf="score<20" [ngStyle]="{'color':'red'}">Needs Work!</h2>
+      <h2 *ngIf="score>=20 && score<50" [ngStyle]="{'color':'orange'}">A decent start!</h2>
+      <h2 *ngIf="score>=50 && score<100">Doing good!</h2>
+      <h2 *ngIf="score>=100 && score<200" [ngStyle]="{'color':'green'}">Great Job!</h2>
+      <h2 *ngIf="score>=200" [ngStyle]="{'color':'blue'}">Github Elite!</h2>
+    </ng-container>
+    <ng-container *ngIf="error.code">
+      <h1>Oops! Something went bad</h1>
+      <h2>{{error.msg}}</h2>
+    </ng-container>
+  </div>
+</div>
