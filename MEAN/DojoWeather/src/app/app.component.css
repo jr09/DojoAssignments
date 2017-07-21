@@ -1,0 +1,18 @@
+#container{
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    /*text-align: center;*/
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+h1{
+    text-align: center;
+}
+.links{
+    text-align: center;
+}
+a{
+    text-decoration-line: none;
+    margin: 50px 50px;
+    display: inline-block;
+}

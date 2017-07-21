@@ -1,0 +1,11 @@
+.weather{
+    width: 350px;
+    display: inline-block;
+    vertical-align: middle;
+}
+img{
+    display: inline-block;
+    vertical-align: middle;
+    height: 300px;
+    width: 450px;
+}
