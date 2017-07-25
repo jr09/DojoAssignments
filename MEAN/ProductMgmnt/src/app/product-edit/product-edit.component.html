@@ -1,0 +1,24 @@
+<h2>Edit product</h2>
+<form *ngIf="product" (submit)="updateProduct($event)" #productForm="ngForm">
+  <div class="form_row">
+    <label>Title:</label>
+    <input type="text" name="prodTitle" minlength="3" required="true" [(ngModel)]="product.title" #prodTitle="ngModel" value="{product.title}">
+  </div>
+  <div *ngIf="(prodTitle.touched || prodTitle.dirty) && prodTitle.errors">
+    <p class="form_errors" *ngIf="prodTitle.errors.required">Field cannot be empty</p>
+    <p class="form_errors" *ngIf="prodTitle.errors.minlength">Minimum {{prodTitle.errors.minlength.requiredLength}} characters required</p>
+  </div>
+  <div class="form_row">
+    <label>Price:</label>
+    <input type="number" name="prodPrice" required="true" [(ngModel)]="product.price" #prodPrice="ngModel" value="product.price">
+  </div>
+  <div *ngIf="(prodPrice.touched || prodPrice.dirty) && prodPrice.errors">
+    <p class="form_errors" *ngIf="prodPrice.errors.required">Field cannot be empty</p>
+  </div>
+  <div class="form_row">
+    <label>Image Url:</label>
+    <input type="text" name="prodImg" [(ngModel)]="product.image_url" #prodImg="ngModel" value="product.image_url">
+  </div>
+  <button class="update" [hidden]="productForm.invalid">Update</button>
+</form>
+<button class="delete" (click)="removeProduct()">Delete</button>

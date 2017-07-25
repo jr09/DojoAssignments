@@ -1,0 +1,22 @@
+.form_row{
+    margin: 30px;
+}
+.form_row label{
+    display: inline-block;
+    width: 100px;
+}
+button{
+    width: 60px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    border: none;
+    margin-left: 205px;
+}
+.form_errors{
+    font-size: 10px;
+    margin: 0px;
+    color: red;
+    font-style: italic;
+    margin: -10px 30px;
+}

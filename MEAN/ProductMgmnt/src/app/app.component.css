@@ -1,0 +1,21 @@
+#container{
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.header{
+    text-align: center;
+}
+nav{
+    text-align: center;
+}
+nav a{
+    text-decoration: none;
+    margin-right: 30px;
+}
+fieldset{
+    height: 500px;
+    margin-top: 30px;
+    overflow: scroll;
+}
