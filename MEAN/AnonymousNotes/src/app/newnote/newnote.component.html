@@ -1,0 +1,16 @@
+<fieldset>
+  <legend>Add new note!</legend>
+  <form (submit)="submitForm($event) || noteForm.reset()" #noteForm="ngForm">
+    <label>Note: </label>
+    <input type="text" name="newNoteText" minlength="3" required="true" [(ngModel)]="newNote.text" #newNoteText="ngModel">
+    <div *ngIf="(newNoteText.touched || newNoteText.dirty) && newNoteText.errors">
+      <p class="form_errors" *ngIf="newNoteText.errors.required">
+        Field cannot be empty!
+      </p>
+      <p class="form_errors" *ngIf="newNoteText.errors.minlength">
+        Minimum length of {{newNoteText.errors.minlength.requiredLength}} characted required!
+      </p>
+    </div>
+    <button [hidden]="noteForm.invalid">Add!</button>
+  </form>
+</fieldset>
