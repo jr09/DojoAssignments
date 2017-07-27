@@ -3,3 +3,4 @@ const router = require('express').Router();
 
 module.exports = router
     .post('/', noteController.create)
+    .get('/', noteController.getAll)

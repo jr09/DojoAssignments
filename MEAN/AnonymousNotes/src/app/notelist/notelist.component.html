@@ -1,3 +1,9 @@
-<p>
-  notelist works!
-</p>
+<fieldset *ngIf="notesArray">
+  <legend>All Notes</legend>
+  <ng-container *ngFor="let note of notesArray">
+    <div class="noteclass">
+      <h5>Noted: {{note.date | date:'medium'}}</h5>
+      <h3>{{note.text}}</h3>
+    </div>
+  </ng-container>
+</fieldset>

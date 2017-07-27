@@ -8,7 +8,7 @@ const noteSchema = new Schema({
         minlength: 3
     },
     date: {
-        type: String
+        type: Date, default: Date.now
     }
 })
 

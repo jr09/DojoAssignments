@@ -14,5 +14,18 @@ module.exports = {
         .catch(function(error){
             console.log(error)
         })
+    },
+
+    getAll(request, response){
+        console.log('fetching all notes');
+        Note.find({})
+        .then(function(notes){
+            console.log(notes);
+            response.json(notes);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
     }
+
 };

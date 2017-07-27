@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Note } from '../note'
 import { NoteserviceService } from '../noteservice.service'
 
@@ -18,10 +18,12 @@ export class NewnoteComponent implements OnInit {
 
   submitForm(event): void{
     event.preventDefault();
-    this.newNote.date = "Jan 1,2017,6:11pm"
     console.log('im in the submitform', this.newNote);
     this._noteservive.createNote(this.newNote)
-    .then(note => console.log('sent to the service'))
+    .then(note => {
+      console.log('sent to the service');
+      this._noteservive.updateNotesArray(note);
+    })
     .then(() => this.newNote = new Note())
     .catch(console.log);
     }
