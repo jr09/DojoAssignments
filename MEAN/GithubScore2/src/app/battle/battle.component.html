@@ -1,0 +1,47 @@
+<div *ngIf="!form1_completed || !form2_completed">
+  <div class="playerdiv">
+    <h2>Player 1</h2>
+    <form (submit)="player1submit($event)" #player1form="ngForm">
+      <label>Github Username: </label>
+      <input type="text" name="username1" [(ngModel)]="player1.username" #username1="ngModel" required="true" minlength="3">
+      <div *ngIf="(username1.touched || username1.dirty) && username1.errors">
+        <p class="form_errors" *ngIf="username1.errors.minlength">
+          Miminum {{username1.errors.minlength.requiredLength}} characters required!
+        </p>
+        <p class="form_errors" *ngIf="username1.errors.required">
+          Field cannot be empty!
+        </p>
+      </div>
+      <button [disabled]="player1form.invalid">Get User</button>
+      <p class="form_errors" *ngIf="errors1">{{errors1}}</p>
+    </form>
+  </div>
+  <div class="playerdiv">
+    <h2>Player 2</h2>
+    <form (submit)="player2submit($event)" #player2form="ngForm">
+      <label>Github Username: </label>
+      <input type="text" name="username2" [(ngModel)]="player2.username" #username2="ngModel" required="true" minlength="3">
+      <div *ngIf="(username2.touched || username2.dirty) && username2.errors">
+        <p class="form_errors" *ngIf="username2.errors.minlength">
+          Miminum {{username2.errors.minlength.requiredLength}} characters required!
+        </p>
+        <p class="form_errors" *ngIf="username2.errors.required">
+          Field cannot be empty!
+        </p>
+      </div>
+      <button [disabled]="player2form.invalid">Get User</button>
+      <p class="form_errors" *ngIf="errors2">{{errors2}}</p>
+    </form>
+  </div>
+</div>
+<div *ngIf="form1_completed && form2_completed">
+  <div class="playerdiv">
+    <img src={{player1.avatar}} alt="player1 image here">
+    <h2>{{player1.username}}</h2>
+  </div>
+  <div class="playerdiv">
+    <img src={{player2.avatar}} alt="player2 image here">
+    <h2>{{player2.username}}</h2>
+  </div>
+  <button (click)="doBattle()">Battle!</button>
+</div>

@@ -1,0 +1,8 @@
+<div class="text">
+    <h1 class="first">1st Place</h1>
+    <h3 class="first">{{results[0].username}} (Score: {{results[0].score}})</h3>
+    <h1 class="second">2nd Place</h1>
+    <h3 class="second">{{results[1].username}} (Score: {{results[1].score}})</h3>
+</div>
+<img src={{results[0].avatar}}>
+<a [routerLink]="['/battle']"><button>Reset</button></a>

@@ -1,0 +1,27 @@
+.playerdiv{
+    text-align: center;
+    width: 400px;
+    height: auto;
+    border: 0.5px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+.playerdiv button{
+    display: block;
+    width: 80px;
+    height: 30px;
+    border: none;
+    margin: 20px auto;
+}
+.playerdiv img{
+    width: 200px;
+    height: 150px;
+    margin: 10px auto;
+}
+.form_errors{
+    color: red;
+}
+.form_errors p{
+    font-size: 5px;
+    margin: -5px;
+}

@@ -1,0 +1,22 @@
+.rankinggroup{
+    border: 0.5px solid black;
+    margin: 30px 0;
+}
+.img_name{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px;
+    border: 0.2px solid black;
+    width: 250px;
+    height: 200px;
+    text-align: center;
+}
+.rankinggroup h1{
+    display: inline-block;
+    vertical-align: middle;
+}
+.img_name img{
+    margin: 10px auto;
+    width: 200px;
+    height: 100px;
+}

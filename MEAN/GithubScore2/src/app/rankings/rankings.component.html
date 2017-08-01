@@ -1,0 +1,9 @@
+<div class="ranking-container" *ngIf="rankings.length">
+  <div class="rankinggroup" *ngFor="let ranking of rankings">
+    <div class="img_name">
+      <img src={{ranking.avatar}} alt="img here">
+      <h2>{{ranking.username}}</h2>
+    </div>
+    <h1>Score: {{ranking.score}}</h1>
+  </div>
+</div>
