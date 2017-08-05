@@ -1,0 +1,28 @@
+.form_row label, input, textarea{
+    display: inline-block;
+    margin: 10px;
+}
+.form_row label{
+    width: 100px;
+}
+button{
+    display: block;
+    width: 60px;
+    height: 30px;
+    color: white;
+    border: none;
+    background-color: blue;
+    margin-left: 200px;
+    margin-bottom: 10px;
+}
+.section1, .section2{
+    display: inline-block;
+    vertical-align: top;
+}
+.section2{
+    margin-left: 100px;
+}
+.editlisting{
+    border: 0.2px solid black;
+    margin: 20px 0px;
+}

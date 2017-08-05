@@ -1,0 +1,9 @@
+#container{
+    width: 900px;
+    margin: 0 auto;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.header{
+    text-align: center;
+}

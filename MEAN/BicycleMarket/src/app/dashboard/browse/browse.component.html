@@ -1,0 +1,15 @@
+<h2>Listings</h2>
+
+<div *ngIf="bikeList.length > 0">
+  <div class="listing_item" *ngFor="let bike of bikeList">
+    <div class="section1">
+      <h2>{{bike.title}}</h2>
+      <p>{{bike.description}}</p>
+    </div>
+    <div class="section2">
+      <h2>${{bike.price}}</h2>
+      <p>{{bike.location}}</p>
+      <h3>{{bike.user.email}}</h3>
+    </div>
+  </div>
+</div>

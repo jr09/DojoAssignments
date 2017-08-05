@@ -1,0 +1,59 @@
+<fieldset>
+  <legend><h2>Create Listing</h2></legend>
+  <form (submit)="newBikeSubmit($event)" #newBikeForm="ngForm">
+    <div class="section1">
+      <div class="form_row">
+        <label>Title:</label>
+        <input type="text" name="title" [(ngModel)]="newBike.title">
+     </div>
+      <div class="form_row">
+        <label>Description:</label><br>
+        <textarea name="Description" [(ngModel)]="newBike.description" rows="5" cols="55"></textarea>
+     </div>
+    </div>
+    <div class="section2">
+      <div class="form_row">
+        <label>Price($):</label>
+        <input type="number" name="price" [(ngModel)]="newBike.price">
+      </div>
+      <div class="form_row">
+        <label>Location:</label>
+        <input type="text" name="location" [(ngModel)]="newBike.location">
+      </div>
+      <button>Create!</button>
+    </div>
+  </form>
+</fieldset>
+
+
+<h2>Edit Your Listings</h2>
+<div *ngIf="userListings">
+  <div *ngFor="let bike of userListings.bikes; let idx = index" [attr.data-index]="idx">
+    <form class="editlisting" (submit)="updateListing(userListingBikes[idx])">
+      <div class="section1">
+        <div class="form_row">
+          <label>Title:</label>
+          <input type="text" name="title" [(ngModel)]="userListingBikes[idx].title">
+        </div>
+        <div class="form_row">
+          <label>Description:</label><br>
+          <textarea name="Description" [(ngModel)]="userListingBikes[idx].description" rows="5" cols="55"></textarea>
+        </div>
+      </div>
+
+      <div class="section2">
+        <div class="form_row">
+          <label>Price($):</label>
+          <input type="number" name="price" [(ngModel)]="userListingBikes[idx].price">
+        </div>
+        <div class="form_row">
+          <label>Location:</label>
+          <input type="text" name="location" [(ngModel)]="userListingBikes[idx].location">
+        </div>
+        <button type="submit">Update!</button>
+        <button type="button" (click)="deleteListing(userListingBikes[idx])">Delete</button>
+      </div>
+
+    </form>
+  </div>
+</div>

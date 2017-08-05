@@ -1,0 +1,11 @@
+.section1, .section2{
+    display: inline-block;
+    vertical-align: top;
+}
+.section2{
+    margin-left: 100px;
+}
+.listing_item{
+    border: 0.2px solid black;
+    margin: 10px 0px;
+}

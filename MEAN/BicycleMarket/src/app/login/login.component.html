@@ -1,0 +1,119 @@
+<!--login form-->
+
+<fieldset>
+  <legend>Login</legend>
+  <form (submit)="login_form($event) || loginForm.reset()" #loginForm="ngForm">
+    <div class="form_row">
+      <label>Email:</label>
+      <input type="text" name="loginEmail" [(ngModel)]="loginUser.email" #loginEmail="ngModel" required="true">
+    </div>
+    
+    <div class="form_row">
+      <label>Password:</label>
+      <input type="password" name="loginPass" [(ngModel)]="loginUser.password" #loginPass="ngModel" required="true">
+    </div>
+    
+    <button [hidden]="loginForm.invalid" >Login!</button>
+  </form>
+
+<!--login form errors-->
+
+  <div *ngIf="(loginEmail.touched || loginEmail.dirty) && loginEmail.errors">
+    <p class="form_errors" *ngIf="loginEmail.errors.required">
+      Field cannot be empty!
+    </p>
+  </div>
+
+  <div *ngIf="(loginPass.touched || loginPass.dirty) && loginPass.errors">
+    <p class="form_errors" *ngIf="loginPass.errors.required">
+      Field cannot be empty!
+    </p>
+  </div>
+
+  <div *ngIf="registrationErrors">
+    <p class="form_errors">
+      {{registrationErrors}}
+    </p>
+  </div>
+</fieldset>
+
+<!--registration form-->
+
+<fieldset>
+  <legend>Register</legend>
+  <form (submit)="register_form($event) || registerForm.reset()" #registerForm="ngForm">
+    <div class="form_row">
+      <label>First Name:</label>
+      <input type="text" name="registerfname" [(ngModel)]="registerUser.fname" #registerfname="ngModel" required="true" minlength="4">
+    </div>
+
+    <div class="form_row">
+      <label>Last Name:</label>
+      <input type="text" name="registerlname" [(ngModel)]="registerUser.lname" #registerlname="ngModel" required="true" minlength="4">
+    </div>
+
+    <div class="form_row">
+      <label>Email:</label>
+      <input type="text" name="registerEmail" [(ngModel)]="registerUser.email" #registerEmail="ngModel" required="true" minlength="4" pattern='^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$'>
+    </div>
+
+    <div class="form_row">
+      <label>Password:</label>
+      <input type="password" name="registerPass" [(ngModel)]="registerUser.password" #registerPass="ngModel" required="true" minlength="8">
+    </div>
+
+    <div class="form_row">
+      <label>Confirm Password:</label>
+      <input type="password" name="registerConfPass" [(ngModel)]="confpass" #registerConfPass="ngModel">
+    </div>
+    <button [hidden]="registerForm.invalid" >Register!</button>
+  </form>
+    
+<!--registration form errors-->
+
+  <div *ngIf="(registerfname.touched || registerfname.dirty) && registerfname.errors">
+    <p class="form_errors" *ngIf="registerfname.errors.required">
+      Field cannot be empty!
+    </p>
+    <p class="form_errors" *ngIf="registerfname.errors.minlength">
+      Minimum {{registerfname.errors.minlength.requiredLength}} characters required!
+    </p>
+  </div>
+
+  <div *ngIf="(registerlname.touched || registerlname.dirty) && registerlname.errors">
+    <p class="form_errors" *ngIf="registerlname.errors.required">
+      Field cannot be empty!
+    </p>
+    <p class="form_errors" *ngIf="registerlname.errors.minlength">
+      Minimum {{registerlname.errors.minlength.requiredLength}} characters required!
+    </p>
+  </div>
+
+  <div *ngIf="(registerPass.touched || registerPass.dirty) && registerPass.errors">
+    <p class="form_errors" *ngIf="registerPass.errors.required">
+      Field cannot be empty!
+    </p>
+    <p class="form_errors" *ngIf="registerPass.errors.minlength">
+      Minimum {{registerPass.errors.minlength.requiredLength}} characters required!
+    </p>
+  </div>
+
+  <div *ngIf="(registerConfPass.touched || registerConfPass.dirty)">
+    <p class="form_errors" *ngIf="(registerPass.value != registerConfPass.value)">
+      Confirm password does not match Password!
+    </p>
+  </div>
+
+  <div *ngIf="(registerEmail.touched || registerEmail.dirty) && registerEmail.errors">
+    <p class="form_errors" *ngIf="registerEmail.errors.required">
+      Field cannot be empty!
+    </p>
+    <p class="form_errors" *ngIf="registerEmail.errors.minlength">
+      Minimum {{registerEmail.errors.minlength.requiredLength}} characters required!
+    </p>
+    <p class="form_errors" *ngIf="registerEmail.errors.pattern">
+      Email is not valid!
+    </p>
+  </div>
+    
+</fieldset>
